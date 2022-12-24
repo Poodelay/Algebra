@@ -1,7 +1,6 @@
 #pragma once
 
-#include <cstddef>
-#include <iostream>
+#include <cstddef>   // std::size_t
 #include <stdexcept> // std::out_of_range
 #include <tuple>     // std::tuple
 #include <memory>    // std::size_t
