@@ -1,5 +1,4 @@
 #include "preprocessor.hpp"
-#include "syntax.hpp" // прописать линковку!
 
 Preprocessor::Preprocessor(lib::library_type &library) : library_{library},
   commands_
