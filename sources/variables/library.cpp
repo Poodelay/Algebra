@@ -34,7 +34,7 @@ void lib::interpret(integer_number_type &value, line_type &string, library_type 
 
 void lib::interpret(line_type &value, line_type &string, library_type &library)
 {
-  if ((string.back()) == '"')
+  if ((string.back()) == '\"')
   {
     value = string;
   }

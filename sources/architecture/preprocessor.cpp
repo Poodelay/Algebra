@@ -1,5 +1,5 @@
 #include "preprocessor.hpp"
-#include "library.hpp"
+#include "syntax.hpp" // прописать линковку!
 
 Preprocessor::Preprocessor(lib::library_type &library) : library_{library},
   commands_
@@ -13,6 +13,7 @@ Preprocessor::Preprocessor(lib::library_type &library) : library_{library},
 void Preprocessor::set(lib::lines_type &lines)
 {
   lib::line_type Value = lines.back(), Name = lines.front();
+  library_.flag = false;
   library_.set(Name,Value);
 }
 

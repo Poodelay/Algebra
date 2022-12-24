@@ -36,7 +36,7 @@ class Database
     ~Database();
 
     bool exists(line_type &name) const;               // существование
-                                                     // переменной
+                                                      // переменной
 
     void set(const line_type &name, const line_type &value);
 
@@ -55,9 +55,9 @@ class Database
     template<typename T>
       T get(const line_type &name); // возвращает значение переменной
     std::type_index getTypeId(const line_type &name);
+    bool flag;
 
   private:
-
     line_type signs_;
     std::tuple<function_type<Ts>...> functions_;
 
@@ -97,25 +97,28 @@ bool Database<Ts...>::exists(line_type &name) const
   return it != this->variables.end()? 1 : 0;
 }
 
-  template <typename... Ts>
+template <typename... Ts>
 void Database<Ts...>::set(const line_type& name, const line_type& value)
 {
-  if (this->find_(value.back()))
-  {
-    const auto& sign{value.back()};
-    auto signs_ci{this->signs_.cbegin()};
+  if (!flag) {
+    if (this->find_(value.back()))
+    {
+      this->flag = true;
+      const auto& sign{value.back()};
+      auto signs_ci{this->signs_.cbegin()};
 
-    auto cond = [&](auto) {
-      return ( sign == *(signs_ci++) );
-    };
+      auto cond = [&](auto) {
+        return ( sign == *(signs_ci++) );
+      };
 
-    //auto func = [&]<typename CF>(CF convFunc) {
-    auto func = [&](auto convFunc) {
-      this->set(name, (*convFunc)(value));
-    };
+      //auto func = [&]<typename CF>(CF convFunc) {
+      auto func = [&](auto convFunc) {
+        this->set(name, (*convFunc)(value));
+      };
 
-    this->forEachConversionFunction_(func, cond);
-  }
+      this->forEachConversionFunction_(func, cond);
+    }
+  } else { this->set<line_type>(name, value); }
 }
 
 template <typename... Ts>
@@ -123,11 +126,10 @@ template <typename T>
 void Database<Ts...>::set(const line_type &name, const T value)
 {
   auto it = this->variables.find(name);
-  if (it == this->variables.end()){
+  if (it == this->variables.end()) {
     this->variables.insert({name, Unit{std::make_shared<T>(value),
-                                                   typeid(decltype(value))}});
-  }
-  else
+        typeid(decltype(value))}});
+  } else
     this->assign<T>(value, name);
 }
 
@@ -213,8 +215,9 @@ bool Database<Ts...>::find_(const char& a)
 {
   for (std::size_t i = 0; i < this->signs_.size(); ++i)
   {
-    if (a == this->signs_[i])
+    if (a == this->signs_[i]) {
       return true;
+    }
   }
   throw std::invalid_argument("Variable type specified incorrectly");
 }
