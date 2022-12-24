@@ -59,11 +59,11 @@ void Interpreter::term_()
         term::display("input data error");
       }
     } else if (COMMAND == "SET") {
-//      try {
+      try {
         preprocessor_.set(LINES);
-//    } catch (...) {
-//      term::display("input data error");
-//    }
+      } catch (...) {
+        term::display("input data error");
+      }
     } else if (COMMAND == "DEL") {
       try {
         preprocessor_.del(LINES);
