@@ -13,7 +13,8 @@ namespace alg
   template <typename T>
     T pow(T &t, const lib::integer_number_type &n);      // степень
 
-  // корень будет, когда Данил напишет
+  template <typename T>
+    lib::floating_point_type sqrt(const T &t) noexcept(false); // корень
 
   template <typename T1, typename T2>
     auto sum(const T1 &t1, const T2 &t2) noexcept(true); // сумма
@@ -55,6 +56,52 @@ T alg::pow(T &t, const lib::integer_number_type &n) // только степен
 auto alg::sum(const T1 &t1, const T2 &t2) noexcept(true)
 {
   return t1 + t2;
+}
+
+  template <typename T>
+lib::floating_point_type alg::sqrt(const T &chislo) noexcept(false)
+{
+  if (chislo == 0)
+  {
+    return 0;
+  }
+  else if (chislo == 1)
+  {
+    return 1;
+  }
+  else if (chislo < 0)
+  {
+    throw exc::invalid_data("wtf?!");
+  }
+  else
+  {
+    double i = 1;
+    while (true) {
+      i++;
+      if (i * i > chislo) {
+        i--;
+        while (true) {
+          i += 0.1;
+          if (i * i > chislo) {
+            i -= 0.1;
+            while (true) {
+              i += 0.01;
+              if (i * i > chislo) {
+                i -= 0.01;
+                while (true) {
+                  i += 0.001;
+                  if (i * i > chislo) {
+                    i -= 0.001;
+                    return i;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
   template <typename T1, typename T2>

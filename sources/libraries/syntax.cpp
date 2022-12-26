@@ -1,5 +1,4 @@
 #include "syntax.hpp"
-#include "library.hpp"
 
 std::list<std::string> stx::split(std::string line, char sep)
 {

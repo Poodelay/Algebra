@@ -6,6 +6,7 @@
 #include <map>
 #include <string>
 #include <list>
+#include <ios>
 
 class Postprocessor
 {

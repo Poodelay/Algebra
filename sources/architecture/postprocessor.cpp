@@ -1,7 +1,4 @@
 #include "postprocessor.hpp"
-#include "library.hpp"
-#include "terminal.hpp"
-#include <ios>
 
 Postprocessor::Postprocessor (lib::library_type &library) : library_{library}, commands_
 { {"SIZE", &Postprocessor::size},

@@ -1,14 +1,26 @@
 #pragma once
 
-// #include "library.hpp"
-// #include <filesystem> //прикол
+#include "library.hpp"
 #include <fstream>
+
+struct Passfile
+{
+  template <typename... T>
+    Passfile(const T &...) {}
+};
 
 namespace file
 {
-    void read(std::fstream &input, std::string &line);//, std::string_view path);
-    void write(std::fstream &output, const std::string &line);//, std::string_view path);
+  void input(std::ifstream &input, std::string &line, std::string prefix);
+  template <typename... T>
+    void write(lib::line_type &path, const T &...t);
+}
 
-    // template <typename Op> // Op -- operation (predicate)
-    //  void stream(std::filesystem::path path, std::ios_base::openmode om, Op op);
+  template <typename... T>
+void file::write(lib::line_type &path, const T &...t)
+{
+  std::ofstream output (path, std::ios::app);
+  Passfile{(output << t << ' ', 1)...};
+  output << '\n';
+  output.close();
 }

@@ -2,11 +2,11 @@
 
 cmake_minimum_required(VERSION 3.22.2)
 
-project(Algebra VERSION ${CMAKE_VERSION} LANGUAGES CXX)
+project(Algebra VERSION 3.19.7 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-
+#set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_compile_options(-Wall -ggdb)
 #add_compile_options(-Wall -Ofast)
 
@@ -91,7 +91,7 @@ target_link_libraries(_sntx _libr)
 target_link_libraries(_intr _libr _prep _post _proc _sntx _excp _term _file _data)
 target_link_libraries(_post _term _data _libr)
 target_link_libraries(_prep _data _libr)
-target_link_libraries(_proc _algb _term _libr _sntx _excp)
+target_link_libraries(_proc _algb _term _libr _sntx _excp _file)
 
 #-------------------------------------------------------------------------------
 
