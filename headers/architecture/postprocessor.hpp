@@ -19,9 +19,8 @@ public:
     lib::library_type &library_;
     std::map<key_type, function_type> commands_;
 
-    void size ( lib::lines_type &lines); //размер листа (кол-во переменных)
-    void allNameConsol ( lib::lines_type &lines);//вывод в консоль все имена переменных
-//    void allNameFile ( lib::lines_type &lines); //вывод в файл все имена переменных
-    void clearPost( lib::lines_type &lines); //отчистка файла/консоли
+    void size ( lib::lines_type &lines);
+    void allNameConsol ( lib::lines_type &lines);
+    void clearPost( lib::lines_type &lines);
     void exs(lib::lines_type &lines);
 };

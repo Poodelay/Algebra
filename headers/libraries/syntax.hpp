@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <algorithm> // для перевода в капс
+#include <algorithm>
 #include "library.hpp"
 namespace stx
 {

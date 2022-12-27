@@ -21,7 +21,7 @@ std::list<std::string> stx::split(std::string line, char sep)
   return result;
 }
 
-std::string stx::toUppercase(std::string line) // caps
+std::string stx::toUppercase(std::string line)
 {
   std::transform(line.begin(), line.end(), line.begin(), ::toupper);
   return line;

@@ -8,7 +8,8 @@ int main(int argc, char *argv[])
     lib::line_type path (argv[6]); // я так понял первые 5 вим сам заполняет
     Interpreter{path};
   } else {
-    Interpreter{};
+    lib::line_type path = "log.txt";
+    Interpreter{path};
   }
   std::cout << "well done" << std::endl;
   return 0;

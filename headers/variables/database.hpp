@@ -1,13 +1,13 @@
 #pragma once
 
-#include <cstddef>   // std::size_t
-#include <stdexcept> // std::out_of_range
-#include <tuple>     // std::tuple
-#include <memory>    // std::size_t
-#include <string>    // std::string
-#include <typeindex> // std::type_index
-#include <map>       // std::map
-#include <list>      // std::list
+#include <cstddef>
+#include <stdexcept>
+#include <tuple>
+#include <memory>
+#include <string>
+#include <typeindex>
+#include <map>
+#include <list>
 
 template <typename... Ts>
 class Database
@@ -23,37 +23,28 @@ class Database
     static constexpr size_type N {sizeof...(Ts)};
     struct Unit
     {
-      std::shared_ptr<void> value{nullptr}; // ссылка на переменную
-      std::type_index index{typeid(void)};  // тип переменной
+      std::shared_ptr<void> value{nullptr};
+      std::type_index index{typeid(void)};
     };
-    std::map<line_type, Unit> variables;    // содержит все переменные
-
-    // 1) набор символов, отвечающих за тип
-    // 2) набор функций преобразования из строк к конкретный тип
+    std::map<line_type, Unit> variables;
 
     Database(const char (&signs)[N], const function_type<Ts>... functions);
     ~Database();
 
-    bool exists(line_type &name) const;               // существование
-                                                      // переменной
-
+    bool exists(line_type &name) const;
     void set(const line_type &name, const line_type &value);
-
     template <typename T>
-      void set(const line_type &name, const T value); // создает переменную
-    void erase(line_type &name);                      // удаляет переменную
-
+      void set(const line_type &name, const T value);
+    void erase(line_type &name);
     void assign(const line_type &value, const line_type &name);
     template<typename T>
-      void assign(const T t, const line_type& name); // изменяет значение
-                                                     // переменной
-    size_type size() const;                          // возвращает кол-во
-                                                     // переменных
-    lines_type allNames() const;                     // возвращает имена всех
-                                                     // переменных
+      void assign(const T t, const line_type& name);
+    size_type size() const;
+    lines_type allNames() const;
     template<typename T>
-      T get(const line_type &name); // возвращает значение переменной
+      T get(const line_type &name);
     std::type_index getTypeId(const line_type &name);
+
     bool flag;
 
   private:
@@ -110,7 +101,6 @@ void Database<Ts...>::set(const line_type& name, const line_type& value)
         return ( sign == *(signs_ci++) );
       };
 
-      //auto func = [&]<typename CF>(CF convFunc) {
       auto func = [&](auto convFunc) {
         this->set(name, (*convFunc)(value));
       };

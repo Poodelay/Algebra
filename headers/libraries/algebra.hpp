@@ -1,32 +1,32 @@
 #pragma once
 
-#include <cstdint>       // std::size_t
-#include "library.hpp"   // подключаем библеотеку Дамира
-#include "exception.hpp" // подключаем наш файл
+#include <cstdint>
+#include "library.hpp"
+#include "exception.hpp"
 
 namespace alg
 {
 
   template <typename T>
-    T inc(T &t) noexcept;                                // инкрементация
+    T inc(T &t) noexcept;
 
   template <typename T>
-    T pow(T &t, const lib::integer_number_type &n);      // степень
+    T pow(T &t, const lib::integer_number_type &n);
 
   template <typename T>
-    lib::floating_point_type sqrt(const T &t) noexcept(false); // корень
+    lib::floating_point_type sqrt(const T &t) noexcept(false);
 
   template <typename T1, typename T2>
-    auto sum(const T1 &t1, const T2 &t2) noexcept(true); // сумма
+    auto sum(const T1 &t1, const T2 &t2) noexcept(true);
 
   template <typename T1, typename T2>
-    auto sub(const T1 &t1, const T2 &t2) noexcept(true); // разность
+    auto sub(const T1 &t1, const T2 &t2) noexcept(true);
 
   template <typename T1, typename T2>
-    auto mult(const T1 &t1, const T2 &t2) noexcept(true); // произведение
+    auto mult(const T1 &t1, const T2 &t2) noexcept(true);
 
   template <typename T1, typename T2>
-    auto div(const T1 &t1, const T2 &t2) noexcept(false); // частное
+    auto div(const T1 &t1, const T2 &t2) noexcept(false);
 }
 
 template <typename T>
@@ -36,7 +36,7 @@ T alg::inc(T &t) noexcept
 }
 
   template <typename T>
-T alg::pow(T &t, const lib::integer_number_type &n) // только степень int
+T alg::pow(T &t, const lib::integer_number_type &n)
 {
   if (n < 0)
   {

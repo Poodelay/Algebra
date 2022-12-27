@@ -18,16 +18,14 @@ class Processor
     using key_type=std::string;
     using function_type = void (Processor::*)(lib::lines_type &);
 
-    void pow(lib::lines_type &lines); //возведение в степень
-    void sqrt(lib::lines_type &lines);//корень числа
-    void inc(lib::lines_type &lines); //прибавление числа
-    void sum(lib::lines_type &lines); //сумма переменных
-    void sub(lib::lines_type &lines); //разность переменных
-    void mult(lib::lines_type &lines);//произведение переменных
-    void div(lib::lines_type &lines); //деление перменных
+    void pow(lib::lines_type &lines);
+    void sqrt(lib::lines_type &lines);
+    void inc(lib::lines_type &lines);
+    void sum(lib::lines_type &lines);
+    void sub(lib::lines_type &lines);
+    void mult(lib::lines_type &lines);
+    void div(lib::lines_type &lines);
 
     lib::library_type &library_;
     std::map<key_type, function_type> commands_;
-    bool flag_;
-    lib::line_type path_;
 };

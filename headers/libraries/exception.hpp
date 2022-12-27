@@ -17,26 +17,26 @@ namespace exc
         const std::string message_;
     };
 
-    struct invalid_data : public Exception // указаны неверные входные данные команды
+    struct invalid_data : public Exception
     {
         invalid_data(const std::string &message) : Exception{
                                                        "Invalid data. Code: " + message + "."} {}
     };
 
-    struct unknown_data : public Exception // указано неизвестное значение параметра команды
+    struct unknown_data : public Exception
     {
         unknown_data(const std::string &message) : Exception{
                                                        "Unknown data. Code: " + message + "."} {}
     };
 
-    struct unspecified_data : public Exception // не указано значение параметра команды
+    struct unspecified_data : public Exception
     {
         unspecified_data(const std::string &message) : Exception{
                                                            "Unspecified data. Code: " + message + "."} {}
     };
 
-    struct undefined_data : public Exception // не задано значение параметра команды
-    {
+    struct undefined_data : public Exception     {
+
         undefined_data(const std::string &message) : Exception{
                                                          "Undefined data. Code: " + message + "."} {}
     };

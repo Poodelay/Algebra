@@ -15,17 +15,15 @@
 class Interpreter
 {
   public:
-    Interpreter (lib::line_type &path);
-    Interpreter ();
+    Interpreter(lib::line_type &path);
     ~Interpreter();
 
   private:
     lib::library_type library_;
 
-    void term_(); //работа с терминалом
-    void file_();//работа с файлом
+    void program_();
 
-    Preprocessor preprocessor_;
-    Processor processor_;
+    Preprocessor  preprocessor_;
+    Processor     processor_;
     Postprocessor postprocessor_;
 };

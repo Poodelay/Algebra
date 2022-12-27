@@ -11,7 +11,6 @@ struct Passfile
 
 namespace file
 {
-  void input(std::ifstream &input, std::string &line, std::string prefix);
   template <typename... T>
     void write(lib::line_type &path, const T &...t);
 }

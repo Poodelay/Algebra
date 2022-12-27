@@ -10,7 +10,7 @@
 
 class Preprocessor
 {
-public:
+  public:
 
     Preprocessor(lib::library_type& library);
 
@@ -20,8 +20,8 @@ public:
     lib::library_type &library_;
     std::map <key_type, function_type> commands_;
 
-    void set(lib::lines_type &lines); //создание переменной
-    void del(lib::lines_type &lines); //удаление переменной
-    void asg(lib::lines_type &lines); //изменение переменной
-    void exs(lib::lines_type &lines); //существование переменной
+    void set(lib::lines_type &lines);
+    void del(lib::lines_type &lines);
+    void asg(lib::lines_type &lines);
+    void exs(lib::lines_type &lines);
 };
